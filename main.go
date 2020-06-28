@@ -1,6 +1,8 @@
 package main
 
 import (
+    "os"
+
 	"github.com/emrahkurman/commissionservice/domain/commission"
 	"github.com/emrahkurman/commissionservice/handlers/commission_handlers"
 	"github.com/emrahkurman/commissionservice/mongo"
@@ -9,8 +11,8 @@ import (
 )
 
 func main()  {
-	//conn := os.Getenv("MONGO_ADDRESS")
-	conn:="mongodb://mongodb.local.hepsiburada.com:27017"
+	conn := os.Getenv("MONGO_ADDRESS")
+	
 	mongoClient, err:= mongo.NewClient(conn)
 	if err!=nil{
 		panic("Connection could not be established")
