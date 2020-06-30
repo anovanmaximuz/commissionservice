@@ -12,10 +12,10 @@ import (
 var PostSingleCommissionHandler = func(r *commission.Repository) func(c *gin.Context) {
 	return func(c *gin.Context) {
 		var rm *request_models.CreateCommissionModel
-		err:=c.BindJSON(&rm)
+		err:=c.ShouldBindJSON(&rm)
 
 		if err!=nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Id can not be empty!"})
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Can not bind the request!"})
 			return
 		}
 
